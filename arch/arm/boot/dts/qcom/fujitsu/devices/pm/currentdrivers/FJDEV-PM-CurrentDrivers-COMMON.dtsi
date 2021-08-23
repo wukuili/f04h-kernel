@@ -1,0 +1,42 @@
+/*
+ * FJDEV-PM-CurrentDrivers.dtsi
+ *
+ * Copyright(C) 2015 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+&pm8994_coincell {
+	qcom,rset-ohms = <800>;
+	qcom,vset-millivolts = <3000>;
+	qcom,charge-enable = <1>;
+};
+
+/* FUJITSU LIMITED:2015-12-16 H16100359 add start */
+&pmi8994_haptics {
+	status = "okay";
+};
+
+&spmi_bus {
+	qcom,pmi8994@3 {
+		qcom,leds@d800 {
+			status = "disabled";
+		};
+		qcom,leds@d300 {
+			status = "disabled";
+		};
+	};
+};
+/* FUJITSU LIMITED:2015-12-16 H16100359 add end */

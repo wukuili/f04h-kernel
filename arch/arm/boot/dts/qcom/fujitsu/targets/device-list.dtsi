@@ -1,0 +1,53 @@
+/*
+ * device-list.dtsi
+ *
+ * Copyright(C) 2015 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+
+#include "../devices/pm/regulator/FJDEV-regulator-COMMON.dtsi"
+#include "../devices/pm/gpio/FJDEV-PM-GPIO.dtsi"
+#include "../devices/pm/currentdrivers/FJDEV-PM-CurrentDrivers-COMMON.dtsi"
+#include "../devices/msm/pinctrl/FJDEV-pinctrl-COMMON.dtsi"
+#include "../devices/msm/blsp/FJDEV-BLSP-COMMON.dtsi"
+#include "../devices/msm/sdcc/FJDEV-sdcc.dtsi"
+#include "../devices/etc/FJDEV-etc.dtsi"
+#include "../devices/bluetooth/FJDEV-bluetooth.dtsi"
+#include "../devices/usb/FJDEV-usb.dtsi"
+#include "../devices/pm/poweron/FJDEV-POWER-ON.dtsi"	/* FUJITSU LIMITED:2015-04-17 H1520319 add */
+#include "../devices/keys/FJDEV-keys.dtsi"		/* FUJITSU LIMITED:2014-10-30 H1510063 add */
+/* FUJITSU LIMITED:2015-12-16 H161_5_DISP_01_0006 add start */
+#include "../devices/display/dsi-panel-s6tnmr7-wqxga-dualmipi-cmd.dtsi"
+#include "../devices/display/dsi-panel-s6tnmr7-wqxga-dualmipi-cmd-powerseq.dtsi"
+/* FUJITSU LIMITED:2015-12-16 H161_5_DISP_01_0006 add end */
+#include "../devices/touchscreen/FJDEV-touchscreen-mxt.dtsi" /* FUJITSU:2016-01-05 TOUCH_DRIVER add */
+
+#include "../devices/walkmotion/FJDEV-walkmotion.dtsi"    /* FUJITSU LIMITED:2016-01-20 ADD */
+#include "../devices/compass/FJDEV-compass.dtsi" /* FUJITSU LIMITED:2016-01-28 ADD */
+/* FUJITSU:2016-01-05 CHARGER add start */
+#include "../devices/charger/FJDEV-charger.dtsi"
+#include "../devices/charger/FJDEV-chg_adc.dtsi"
+#include "../devices/charger/FJDEV-temp.dtsi"
+#include "../devices/charger/FJDEV-battery.dtsi"
+/* FUJITSU:2016-01-05 CHARGER add end*/
+
+#include "../devices/nfc/FJDEV-cxd224x-nfc.dtsi" /* FUJITSU LIMITED:2016-01-20 ADD */
+#include "../devices/edc/FJDEV-edc.dtsi"                  /* FUJITSU LIMITED:2016-01-08 ADD */
+
+/* FUJITSU:2016-02-05 FJ_CAMERA_CUSTOM start */
+#include "../devices/camera/FJDEV-TAB-camera-sensor.dtsi" /* FUJITSU:FJ_CAMERA_CUSTOM add */
+/* FUJITSU:2016-02-05 FJ_CAMERA_CUSTOM end */

@@ -1,0 +1,25 @@
+/*
+ * revf-device-list.dtsi
+ *
+ * COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+#include "device-list.dtsi"
+#include "../../devices/charger/FJDEV-batterydata-6000mah.dtsi" /* FCNT LIMITED:2016-03-14 CHARGER add */
+#include "../../devices/touchscreen/FJDEV-touchscreen-mxt.dtsi" /* FUJITSU:2016-01-05 TOUCH_DRIVER add */
+#include "../../devices/fj_det/FJDEV-fj_det_safety2.dtsi"		/* FCNT LIMITED:2016-02-03 H16100721 add */
+#include "../../devices/keys/FJDEV-keys_rev2.dtsi" /* FCNT LIMITED:2016-02-23 H16100736 add */

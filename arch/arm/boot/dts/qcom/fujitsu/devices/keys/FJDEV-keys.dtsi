@@ -1,0 +1,67 @@
+/*
+ * FJDEV-keys.dtsi
+ *
+ * Copyright(C) 2015 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+&soc {
+	vol_up_keys_intc: up-irq{
+		compatible = "gpio-keys";
+		interrupt-controller;
+		#interrupt-cells = <1>;
+		interrupt-parent = <&msm_gpio>;
+		interrupts = <64 0>;
+		interrupt-names = "up-keys";
+	};
+
+	vol_down_keys_intc: down-irq{
+		compatible = "gpio-keys";
+		interrupt-controller;
+		#interrupt-cells = <1>;
+		interrupt-parent = <&msm_gpio>;
+		interrupts = <77 0>;
+		interrupt-names = "down-keys";
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+		input-name = "gpio-keys";
+		pinctrl-names = "tlmm_gpio_key_active","tlmm_gpio_key_suspend";
+		pinctrl-0 = <&fj_gpio_key_active>;
+		pinctrl-1 = <&fj_gpio_key_suspend>;
+
+		vol_up {
+			label = "volume_up";
+			gpios = <&msm_gpio 64 0x1>;
+			linux,input-type = <1>;
+			linux,code = <115>;
+			interrupt-parent = <&vol_up_keys_intc>;
+			debounce-interval = <5>;
+			debounce-count = <5>;
+		};
+
+		vol_down {
+			label = "volume_down";
+			gpios = <&msm_gpio 77 0x1>;
+			linux,input-type = <1>;
+			linux,code = <114>;
+			interrupt-parent = <&vol_down_keys_intc>;
+			debounce-interval = <5>;
+			debounce-count = <5>;
+		};
+	};
+};

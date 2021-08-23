@@ -1,0 +1,73 @@
+/*
+ * FJDEV-batterydata-6000mah.dtsi
+ *
+ * COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+/{
+	fjdev_batterydata: qcom,battery-data {
+		qcom,batt-id-range-pct = <15>;
+		qcom,battery-6000mah {
+			/* #2321215_Fujitsu_6000mAh_averaged_MasterSlave_Feb24th2016*/
+			qcom,max-voltage-uv = <4320000>;
+			qcom,nom-batt-capacity-mah = <6000>;
+			qcom,batt-id-kohm = <10>;
+			qcom,battery-beta = <3370>;
+			qcom,battery-type = "fjdev_6000mah";
+			qcom,chg-rslow-comp-c1 = <2403796>;
+			qcom,chg-rslow-comp-c2 = <3000411>;
+			qcom,chg-rs-to-rslow = <686108>;
+			qcom,chg-rslow-comp-thr = <0x9A>;
+			qcom,checksum = <0xD393>;
+			qcom,gui-version = "PMI8994GUI - 2.1.6.9";
+			qcom,fg-profile-data = [
+				 E8 83 B3 7C 
+				 96 80 44 76 
+				 36 83 4F 71 
+				 9A 6E D9 4D 
+				 EF 81 24 9A 
+				 D2 BC 61 C9 
+				 57 0F CF 83 
+				 C4 76 29 7B 
+				 5F 74 49 83 
+				 4C 68 07 81 
+				 B1 8D 31 82 
+				 39 99 1E BC 
+				 A1 C8 55 0E 
+				 BC 17 A9 58 
+				 0A 6E E1 FA 
+				 CE 09 3D 44 
+				 1E 2A 00 00 
+				 0A 3E 53 3A 
+				 B2 44 00 00 
+				 00 00 00 00 
+				 00 00 00 00 
+				 C6 6A 2C 6A 
+				 CD 75 AF 7B 
+				 25 7C A7 6B 
+				 BE 74 32 7B 
+				 F6 77 D1 6A 
+				 80 7B 24 C0 
+				 0E C3 58 69 
+				 4D A0 71 0C 
+				 28 00 FF 36 
+				 F0 11 30 03 
+				 00 00 00 0C 
+			];
+		};
+	};
+};

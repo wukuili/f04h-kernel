@@ -1,0 +1,44 @@
+#
+# Near Field Communication (NFC) devices
+#
+
+menuconfig NFC_DEVICES
+	bool "Near Field Communication (NFC) devices"
+	default n
+	---help---
+	  You'll have to say Y if your computer contains an NFC device that
+	  you want to use under Linux.
+
+	  You can say N here if you don't have any Near Field Communication
+	  devices connected to your computer.
+
+if NFC_DEVICES
+
+config CXD224X_NFC
+	tristate "CXD224X NFC driver"
+	depends on I2C
+	select CRC_CCITT
+	default n
+	---help---
+	  Say yes if you want cxd224x Near Field Communication driver.
+	  This is for i2c connected version. If unsure, say N here.
+
+	  To compile this driver as a module, choose m here. The module will
+	  be called cxd224x-i2c.
+
+config CXD224X_NFC_VEN
+	tristate "CXD224X NFC VEN"
+	depends on CXD224X_NFC
+	default n
+	---help---
+	  Say yes if you want to use cxd224x NFC VEN(enable voltage) control.
+	  If unsure, say N here.
+
+config CXD224X_NFC_RST
+	tristate "CXD224X NFC RST"
+	depends on CXD224X_NFC
+	default y
+	---help---
+	  Say yes if you want to use cxd224x NFC RST(external XRST pin) control.
+
+endif # NFC_DEVICES

@@ -1,0 +1,8 @@
+# N-FAUDIO-152015000 start
+menu "Fujitsu HCE Auditory Signal support"
+
+config FUJITSU_HAUDSIG
+	tristate "Fujitsu HCE Auditory Signal Driver"
+	default y
+endmenu
+# N-FAUDIO-152015000 end

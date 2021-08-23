@@ -1,0 +1,145 @@
+/*
+ * FJDEV-chg_adc.dtsi
+ *
+ * COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+&pmi8994_vadc {
+
+	/* USBIN */
+	chan@0 {
+		label = "usbin";
+		reg = <0x00>;
+		qcom,decimation = <0>;
+		qcom,pre-div-channel-scaling = <4>;
+		qcom,calibration-type = "absolute";
+		qcom,scale-function = <0>;
+		qcom,hw-settle-time = <0>;
+		qcom,fast-avg-setup = <0>;
+	};
+
+	/* DCIN */
+	chan@1 {
+		label = "dcin";
+		reg = <0x01>;
+		qcom,decimation = <0>;
+		qcom,pre-div-channel-scaling = <4>;
+		qcom,calibration-type = "absolute";
+		qcom,scale-function = <0>;
+		qcom,hw-settle-time = <0>;
+		qcom,fast-avg-setup = <0>;
+	};
+
+	/* MPP1 */
+	chan@10 {
+		label = "oki_adc";
+		reg = <0x10>;
+		qcom,decimation = <0>;
+		qcom,pre-div-channel-scaling = <0>;
+		qcom,calibration-type = "ratiometric";
+		qcom,scale-function = <17>;         /* SCALE_FJ_OKI_VOLTAGE */
+		qcom,hw-settle-time = <0>;
+		qcom,fast-avg-setup = <0>;
+	};
+};
+
+&pm8994_vadc {
+	/* AMUX2 */
+	chan@34 {
+		label = "temp_center";
+		reg = <0x34>;
+		qcom,decimation = <0>;
+		qcom,pre-div-channel-scaling = <0>;
+		qcom,calibration-type = "ratiometric";
+		qcom,scale-function = <15>;         /* SCALE_FJ_THERM */
+		qcom,hw-settle-time = <0>;
+		qcom,fast-avg-setup = <0>;
+	};
+
+	/* AMUX3 */
+	chan@35 {
+		label = "temp_chg";
+		reg = <0x35>;
+		qcom,decimation = <0>;
+		qcom,pre-div-channel-scaling = <0>;
+		qcom,calibration-type = "ratiometric";
+		qcom,scale-function = <15>;         /* SCALE_FJ_THERM */
+		qcom,hw-settle-time = <0>;
+		qcom,fast-avg-setup = <0>;
+	};
+
+	/* AMUX4 */
+	chan@37 {
+		label = "temp_iris";
+		reg = <0x37>;
+		qcom,decimation = <0>;
+		qcom,pre-div-channel-scaling = <0>;
+		qcom,calibration-type = "ratiometric";
+		qcom,scale-function = <15>;         /* SCALE_FJ_THERM */
+		qcom,hw-settle-time = <0>;
+		qcom,fast-avg-setup = <0>;
+	};
+
+	/* AMUX5 */
+	chan@38 {
+		label = "temp_case";
+		reg = <0x38>;
+		qcom,decimation = <0>;
+		qcom,pre-div-channel-scaling = <0>;
+		qcom,calibration-type = "ratiometric";
+		qcom,scale-function = <15>;         /* SCALE_FJ_THERM */
+		qcom,hw-settle-time = <0>;
+		qcom,fast-avg-setup = <0>;
+	};
+
+	/* LR_MUX4_PU1_AMUX_THM1 */
+	chan@73 {
+		label = "msm_thermal";
+		reg = <0x73>;
+		qcom,decimation = <0>;
+		qcom,pre-div-channel-scaling = <0>;
+		qcom,calibration-type = "ratiometric";
+		qcom,scale-function = <16>;         /* SCALE_FJ_THERM_100K */
+		qcom,hw-settle-time = <0>;
+		qcom,fast-avg-setup = <0>;
+	};
+
+};
+
+&spmi_bus {
+	qcom,pm8994@0 {
+		pm8994_chg_adc: fj,fj_pm_adc_drv {
+			spmi-dev-container;
+			compatible = "fj,fj_pm_adc_drv";
+			status = "ok";
+			#address-cells = <1>;
+			#size-cells = <1>;
+			qcom,fj_pm_adc-vadc = <&pm8994_vadc>;
+		};
+	};
+
+	qcom,pmi8994@2 {
+		pmi8994_chg_adc: fj,fj_pmi_adc_drv {
+			spmi-dev-container;
+			compatible = "fj,fj_pmi_adc_drv";
+			status = "ok";
+			#address-cells = <1>;
+			#size-cells = <1>;
+			qcom,fj_pmi_adc-vadc = <&pmi8994_vadc>;
+		};
+	};
+};

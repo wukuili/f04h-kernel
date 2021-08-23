@@ -1,0 +1,8 @@
+# N-FAUDIO-152047000 start
+menu "Fujitsu Audio Log System Driver"
+
+config FUJITSU_AUDIOLOG
+	tristate "Fujitsu Audio Log System Driver"
+	default y
+endmenu
+# N-FAUDIO-152047000 end

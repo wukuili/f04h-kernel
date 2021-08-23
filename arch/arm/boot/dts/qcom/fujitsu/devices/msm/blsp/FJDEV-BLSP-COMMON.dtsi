@@ -1,0 +1,121 @@
+/*
+ * FJDEV-BLSP-COMMON.dtsi
+ *
+ * Copyright(C) 2016 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+/{
+	aliases {
+		i2c1 = &i2c_1;
+		i2c2 = &i2c_2;
+		i2c5 = &i2c_5;
+		i2c11 = &i2c_11;
+		serial3 = &blsp1_uart2;       /* This device will be called ttyHSL3 */
+		spi8 = &spi_8;
+	};
+};
+
+/************/
+/*   I2C    */
+/************/
+
+&i2c_1 {
+	qcom,clk-freq-out = <400000>;
+	pinctrl-0 = <&fj_i2c_1_active>;
+	pinctrl-1 = <&fj_i2c_1_sleep>;
+	qcom,noise-rjct-scl = <3>;
+	qcom,noise-rjct-sda = <3>;
+	status = "ok";
+};
+
+&i2c_2 {
+	qcom,clk-freq-out = <400000>;
+	pinctrl-0 = <&fj_i2c_2_active>;
+	pinctrl-1 = <&fj_i2c_2_sleep>;
+	qcom,noise-rjct-scl = <3>;
+	qcom,noise-rjct-sda = <3>;
+	status = "ok";
+};
+
+&i2c_5 {
+	qcom,clk-freq-out = <400000>;
+	pinctrl-0 = <&fj_i2c_5_sda_active &fj_i2c_5_scl_active>;
+	pinctrl-1 = <&fj_i2c_5_sda_sleep &fj_i2c_5_scl_sleep>;
+	qcom,noise-rjct-scl = <3>;
+	qcom,noise-rjct-sda = <3>;
+	status = "ok";
+};
+
+&i2c_6 {
+	status = "disabled";
+};
+
+&i2c_11 {
+	qcom,clk-freq-out = <400000>;
+	pinctrl-0 = <&fj_i2c_11_active>;
+	pinctrl-1 = <&fj_i2c_11_sleep>;
+	qcom,noise-rjct-scl = <3>;
+	qcom,noise-rjct-sda = <3>;
+	status = "ok";
+};
+
+/************/
+/*   uart   */
+/************/
+
+&blsp1_uart2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&fj_uart_console_sleep_tx &fj_uart_console_sleep_rx>;
+
+	qcom,msm-bus,name = "serial_uart3";
+	qcom,msm-bus,num-cases = <2>;
+	qcom,msm-bus,active-only;
+	qcom,msm-bus,num-paths = <1>;
+	qcom,msm-bus,vectors-KBps =
+			<86 512 0 0>,
+			<86 512 500 800>;
+	status= "ok";
+};
+
+&blsp2_uart2 {
+	pinctrl-0 = <&fj_hsuart_out_sleep &fj_hsuart_in_sleep>;
+	pinctrl-1 = <&fj_hsuart_out_active &fj_hsuart_in_active>;
+	status = "ok";
+};
+
+/************/
+/*   SPI    */
+/************/
+
+&spi_8 {
+	spi-max-frequency = <19200000>;
+/*FUJITSU LIMITED:2016-01-07 H161_5_MHL_01_0001 mod start */
+	qcom,use-pinctrl;
+	qcom,gpio-clk  = <&msm_gpio 52 0>;
+	qcom,gpio-cs0  = <&msm_gpio 51 0>;
+	qcom,gpio-mosi = <&msm_gpio 49 0>;
+	qcom,gpio-miso = <&msm_gpio 50 0>;
+	pinctrl-names = "spi_default", "spi_sleep";
+	pinctrl-0 = <&spi_8_active>;
+	pinctrl-1 = <&spi_8_sleep>;
+	status = "ok";
+	sii8620: fj-sii8620@72 {
+		compatible = "si,mhl-sii8620";
+		reg = <0x00>;
+	};
+/*FUJITSU LIMITED:2016-01-07 H161_5_MHL_01_0001 mod end */
+};

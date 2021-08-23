@@ -1,0 +1,296 @@
+/*-------------------------------------------------------------------------*/
+/* COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016                */
+/*-------------------------------------------------------------------------*/
+/*
+ * FJDEV-regulator-COMMON.dtsi
+ *
+ * Copyright(C) 2015 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+/********************/
+/*    PM8994 DCDC   */
+/********************/
+&pm8994_s1_corner {
+	/* Qualcomm Reference */
+};
+
+&pm8994_s1_floor_corner {
+	/* Qualcomm Reference */
+};
+
+&pm8994_s1_corner_ao {
+	/* Qualcomm Reference */
+};
+
+&pm8994_s2_corner {
+	/* Qualcomm Reference */
+};
+
+&pm8994_s2_corner_ao {
+	/* Qualcomm Reference */
+};
+
+&pm8994_s3 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_s4 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_s5 {
+	/* Qualcomm Reference */
+};
+
+/* pm8994_s6 Qualcomm Reference */
+
+&pm8994_s7 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_s8 {
+	/* Qualcomm Reference */
+};
+
+/* pm8994_s9 Qualcomm Reference */
+
+/* pm8994_s10 Qualcomm Reference */
+
+&pm8994_s11 {
+	/* Qualcomm Reference */
+};
+
+/* pm8994_s12 Qualcomm Reference */
+
+/********************/
+/*    PM8994 LDO    */
+/********************/
+&pm8994_l1 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l2 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l3 {
+	regulator-min-microvolt = <1200000>;
+	regulator-max-microvolt = <1200000>;
+	qcom,init-voltage = <1200000>;
+};
+
+&pm8994_l4 {
+	/* Qualcomm Reference */
+};
+
+/* pm8994_l5 Qualcomm Reference */
+
+&pm8994_l6 {
+	/* Qualcomm Reference */
+};
+
+/* pm8994_l7 Qualcomm Reference */
+
+&pm8994_l8 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l9 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l10 {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+};
+
+&pm8994_l11 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l12 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l13 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l14 {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+/* FCNT LIMITED:2016-03-15 H161_5_DISP_01_0006 del start */
+	/delete-property/ qcom,proxy-consumer-enable;
+/* FCNT LIMITED:2016-03-15 H161_5_DISP_01_0006 del end */
+};
+
+&pm8994_l15 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l16 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l17 {
+	regulator-min-microvolt = <2700000>;
+	regulator-max-microvolt = <2800000>;
+	qcom,init-voltage = <2700000>;
+};
+
+&pm8994_l18 {
+	regulator-min-microvolt = <2850000>;
+	regulator-max-microvolt = <2900000>;
+	qcom,init-voltage = <2850000>;
+};
+
+&pm8994_l19 {
+	regulator-min-microvolt = <2800000>;
+	regulator-max-microvolt = <2800000>;
+	qcom,init-voltage = <2800000>;
+};
+
+&pm8994_l20 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l21 {
+/* FUJITSU LIMITED:2014-11-26 H1510092 mod start */
+	regulator-min-microvolt = <2500000>;
+	regulator-max-microvolt = <3100000>;
+/* FUJITSU LIMITED:2014-11-26 H1510092 mod end */
+};
+
+&pm8994_l22 {
+	regulator-min-microvolt = <3000000>;
+	regulator-max-microvolt = <3300000>;
+	qcom,init-voltage = <3000000>;
+};
+
+&pm8994_l23 {
+	regulator-min-microvolt = <2700000>;
+	regulator-max-microvolt = <2800000>;
+	qcom,init-voltage = <2800000>;
+};
+
+&pm8994_l24 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l25 {
+	regulator-min-microvolt = <1000000>;
+	regulator-max-microvolt = <1000000>;
+	qcom,init-voltage = <1000000>;
+};
+
+&pm8994_l26 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l27 {
+	regulator-min-microvolt = <1050000>;
+	regulator-max-microvolt = <1200000>;
+	qcom,init-voltage = <1050000>;
+};
+
+&pm8994_l28 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_l29 {
+	regulator-min-microvolt = <2800000>;
+	regulator-max-microvolt = <2800000>;
+	qcom,init-voltage = <2800000>;
+};
+
+&pm8994_l30 {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+};
+
+&pm8994_l31 {
+	regulator-min-microvolt = <1200000>;
+	regulator-max-microvolt = <1200000>;
+	qcom,init-voltage = <1200000>;
+};
+
+&pm8994_l32 {
+	/* Qualcomm Reference */
+};
+
+/********************/
+/*	PM8994 LVS		 */
+/********************/
+&pm8994_lvs1 {
+	/* Qualcomm Reference */
+};
+
+&pm8994_lvs2 {
+	/* Qualcomm Reference */
+};
+
+/********************/
+/*	PM8994 DCDC		 */
+/********************/
+&pmi8994_s1 {
+	/* Qualcomm Reference */
+};
+
+&pmi8994_s2_corner {
+	/* Qualcomm Reference */
+};
+
+&pmi8994_s2_floor_corner {
+	/* Qualcomm Reference */
+};
+
+/* pmi8994_s3 Qualcomm Reference */
+
+&pmi8994_boost_5v {
+	/* Qualcomm Reference */
+};
+
+&pmi8994_boost_pin_ctrl {
+	/* Qualcomm Reference */
+};
+
+&pmi8994_boostbypass {
+	/* Qualcomm Reference */
+};
+
+&mem_acc0_vreg_corner {
+	/* Qualcomm Reference */
+};
+
+&mem_acc1_vreg_corner {
+	/* Qualcomm Reference */
+};
+
+&apc0_vreg_corner {
+	/* Qualcomm Reference */
+};
+
+&apc1_vreg_corner {
+	/* Qualcomm Reference */
+};
+
+&bt_vreg {
+	/* Qualcomm Reference */
+};

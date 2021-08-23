@@ -1,0 +1,91 @@
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+/*----------------------------------------------------------------------------*/
+/*
+ * FJDEV-sdcc.dtsi
+ *
+ * Copyright(C) 2015 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+/* FUJITSU LIMITED:2015-11-18 H1610004 add start */
+&sdc1_clk_on	{/delete-property/ bias-pull-up; /delete-property/ bias-pull-down; bias-disable; /* NO pull */	drive-strength = <10>; /* 10 MA */};
+&sdc1_cmd_on	{/delete-property/ bias-pull-up; /delete-property/ bias-pull-down; bias-disable; /* NO pull */	drive-strength = <10>; /* 10 MA */};
+&sdc1_data_on	{/delete-property/ bias-disable; /delete-property/ bias-pull-down; bias-pull-up; /* pull up */	drive-strength = <8>;  /*  8 MA */};
+&sdc1_clk_off	{/delete-property/ bias-pull-up; /delete-property/ bias-pull-down; bias-disable; /* NO pull */	drive-strength = <2>;  /*  2 MA */};
+&sdc1_cmd_off	{/delete-property/ bias-pull-up; /delete-property/ bias-pull-down; bias-disable; /* NO pull */	drive-strength = <2>;  /*  2 MA */};
+&sdc1_data_off	{/delete-property/ bias-disable; /delete-property/ bias-pull-down; bias-pull-up; /* pull up */	drive-strength = <2>;  /*  2 MA */};
+
+/* FCNT LIMITED:2016-04-13 H1610004-1 mod start */
+&sdc2_clk_on	{/delete-property/ bias-pull-up; /delete-property/ bias-pull-down; bias-disable; /* NO pull */	drive-strength = <14>; /* 14 MA */};
+&sdc2_cmd_on	{/delete-property/ bias-disable; /delete-property/ bias-pull-down; bias-pull-up; /* pull up */	drive-strength = <12>; /* 12 MA */};
+&sdc2_data_on	{/delete-property/ bias-disable; /delete-property/ bias-pull-down; bias-pull-up; /* pull up */	drive-strength = <12>; /* 12 MA */};
+&sdc2_clk_off	{/delete-property/ bias-pull-up; /delete-property/ bias-pull-down; bias-disable; /* NO pull */	drive-strength = <2>;  /*  2 MA */};
+&sdc2_cmd_off	{/delete-property/ bias-disable; /delete-property/ bias-pull-down; bias-pull-up; /* pull up */	drive-strength = <2>;  /*  2 MA */};
+&sdc2_data_off	{/delete-property/ bias-disable; /delete-property/ bias-pull-down; bias-pull-up; /* pull up */	drive-strength = <2>;  /*  2 MA */};
+/* FCNT LIMITED:2016-04-13 H1610004-1 mod end */
+/* FUJITSU LIMITED:2015-11-18 H1610004 add end */
+
+&sdhc_1 {
+	vdd-supply = <&pm8994_l20>;
+	qcom,vdd-voltage-level = <2950000 2950000>;
+	qcom,vdd-current-level = <200 570000>;
+
+	vdd-io-supply = <&pm8994_s4>;
+	qcom,vdd-io-always-on;
+	qcom,vdd-io-voltage-level = <1800000 1800000>;
+	qcom,vdd-io-current-level = <200 325000>;
+
+	pinctrl-names = "active", "sleep";
+	pinctrl-0 = <&sdc1_clk_on &sdc1_cmd_on &sdc1_data_on &sdc1_rclk_on>;
+	pinctrl-1 = <&sdc1_clk_off &sdc1_cmd_off &sdc1_data_off &sdc1_rclk_off>;
+
+	qcom,nonremovable;
+	qcom,clk-rates = <400000 20000000 25000000 50000000 100000000 172000000 344000000>;
+	qcom,bus-speed-mode = "HS400_1p8v", "HS200_1p8v", "DDR_1p8v";
+	status = "ok";
+};
+
+&sdhc_2 {
+	vdd-supply = <&pm8994_l21>;
+/*	qcom,vdd-voltage-level = <2950000 2950000>; */      /* FUJITSU LIMITED:2014-11-26 H1510092 del */
+	qcom,vdd-voltage-level = <3100000 3100000 2500000>; /* FUJITSU LIMITED:2014-11-26 H1510092 add */
+	qcom,vdd-current-level = <200 800000>;
+
+	vdd-io-supply = <&pm8994_l13>;
+	qcom,vdd-io-voltage-level = <1800000 2950000>;
+	qcom,vdd-io-current-level = <200 22000>;
+
+	#address-cells = <0>;
+	interrupt-parent = <&sdhc_2>;
+	interrupts = <0 1 2>;
+	#interrupt-cells = <1>;
+	interrupt-map-mask = <0xffffffff>;
+	interrupt-map = <0 &intc 0 125 0
+			1 &intc 0 221 0
+			2 &pm8994_gpios 8 0x3>;
+	interrupt-names = "hc_irq", "pwr_irq", "status_irq";
+	cd-gpios = <&pm8994_gpios 8 0x1>;
+
+	pinctrl-names = "active", "sleep";
+	pinctrl-0 = <&sdc2_clk_on &sdc2_cmd_on &sdc2_data_on>;
+	pinctrl-1 = <&sdc2_clk_off &sdc2_cmd_off &sdc2_data_off>;
+
+	qcom,clk-rates = <400000 20000000 25000000 50000000 100000000 200000000>;
+	qcom,bus-speed-mode = "SDR12", "SDR25", "SDR50", "DDR50", "SDR104";
+	fj,is-sd; /* FUJITSU LIMITED:2014-11-26 H1510091 add */
+	status = "ok";
+};

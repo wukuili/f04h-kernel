@@ -1,0 +1,70 @@
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU LIMITED 2014-2015
+/*----------------------------------------------------------------------------*/
+&soc {
+    /* I2C : BLSP1 */
+    i2c@f9923000 {
+        cxd224x-i2c@28 {
+            compatible = "cxd224x-i2c";
+            reg = <0x28>;
+            interrupt-parent = <&msm_gpio>;
+            interrupts = <29 0>;
+
+            cxd224x,irq_gpio   = <&msm_gpio 29 0>; /* NFC_HOSTINT */
+            cxd224x,wake_gpio  = <&msm_gpio 30 0>; /* NFC_POW_ON  */
+            cxd224x,hvdd_gpio  = <&msm_gpio 89 0>; /* NFC_HVDD_ON */
+            cxd224x,rst_gpio   = <&msm_gpio 0  0>; /* NFC_XRST    */
+            pinctrl-names = "cxd224x_default_int", "cxd224x_default_wake", "cxd224x_default_hvdd", "cxd224x_default_rst";
+            pinctrl-0 = <&ts_cxd224x_default_int>;
+            pinctrl-1 = <&ts_cxd224x_default_wake>;
+            pinctrl-2 = <&ts_cxd224x_default_hvdd>;
+            pinctrl-3 = <&ts_cxd224x_default_rst>;
+        };
+    };
+};
+
+&tlmm_pinmux {
+    cxd224x_rst {
+        qcom,pins = <&gp 0>;
+        qcom,pin-func = <0>;
+        qcom,num-grp-pins = <1>;
+        label = "cxd224x_rst";
+        ts_cxd224x_default_rst: ts_cxd224x_default_rst {
+            drive-strength = <2>;
+            output-low;
+        };
+    };
+
+    cxd224x_hostint {
+        qcom,pins = <&gp 29>;
+        qcom,pin-func = <0>;
+        qcom,num-grp-pins = <1>;
+        label = "cxd224x_hostint";
+        ts_cxd224x_default_int: ts_cxd224x_default_int {
+            drive-strength = <2>;
+            bias-disable;
+            input-enable;
+        };
+    };
+
+    cxd224x_wake {
+        qcom,pins = <&gp 30>;
+        qcom,pin-func = <0>;
+        qcom,num-grp-pins = <1>;
+        label = "cxd224x_wake";
+        ts_cxd224x_default_wake: ts_cxd224x_default_wake {
+            drive-strength = <2>;
+            output-low;
+        };
+    };
+    cxd224x_hvdd {
+        qcom,pins = <&gp 89>;
+        qcom,pin-func = <0>;
+        qcom,num-grp-pins = <1>;
+        label = "cxd224x_hvdd";
+        ts_cxd224x_default_hvdd: ts_cxd224x_default_hvdd {
+            drive-strength = <2>;
+            output-high;
+        };
+    };
+};

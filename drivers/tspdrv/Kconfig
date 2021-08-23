@@ -1,0 +1,13 @@
+#===============================================================================
+# COPYRIGHT(c) FUJITSU LIMITED 2016
+#===============================================================================
+menu "TouchSense driver support"
+
+config TSPDRV
+	tristate "TouchSense driver support"
+#FUJITSU :2016-01-20 MOD-S
+#	default n
+	default y
+#FUJITSU :2016-01-20 MOD-E
+
+endmenu

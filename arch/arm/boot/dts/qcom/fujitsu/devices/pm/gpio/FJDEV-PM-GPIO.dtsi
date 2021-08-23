@@ -1,0 +1,201 @@
+/*
+ * FJDEV-PM-GPIO.dtsi
+ *
+ * Copyright(C) 2015 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+
+
+&pm8994_gpios {
+	gpio@c000 {
+		status = "okay";
+	};
+
+	gpio@c100 {
+		status = "okay";
+	};
+
+	gpio@c200 {
+		status = "okay";
+	};
+
+	gpio@c300 {
+		status = "okay";
+	};
+
+	gpio@c400 {
+		status = "okay";
+	};
+
+	gpio@c500 {
+		status = "okay";
+	};
+
+	gpio@c600 {
+		status = "okay";
+	};
+
+	gpio@c700 {
+		status = "okay";
+	};
+
+	gpio@c800 {
+		status = "okay";
+	};
+
+	gpio@c900 {
+		status = "okay";
+	};
+
+	gpio@ca00 {
+		status = "okay";
+	};
+
+	gpio@cb00 {
+		status = "okay";
+	};
+
+	gpio@cc00 {
+		status = "okay";
+	};
+
+	gpio@cd00 {
+		status = "okay";
+	};
+
+	gpio@ce00 {
+		status = "okay";
+	};
+
+	gpio@cf00 {
+		status = "okay";
+	};
+
+	gpio@d000 {
+		status = "okay";
+	};
+
+	gpio@d100 {
+		status = "okay";
+	};
+
+	gpio@d200 {
+		status = "okay";
+	};
+
+	gpio@d300 {
+		status = "okay";
+	};
+
+	gpio@d500 {
+		status = "okay";
+	};
+};
+
+&pm8994_mpps {
+	mpp@a000 {
+		status = "disabled";
+	};
+
+	mpp@a100 {
+		status = "okay";
+	};
+
+	mpp@a200 {
+		status = "okay";
+	};
+
+	mpp@a300 {
+		status = "okay";
+	};
+
+	mpp@a400 {
+		status = "okay";
+	};
+
+	mpp@a500 {
+		status = "okay";
+	};
+
+	mpp@a600 {
+		status = "okay";
+	};
+
+	mpp@a700 {
+		status = "okay";
+	};
+};
+
+&pmi8994_gpios {
+	gpio@c000 {
+		status = "okay";
+	};
+
+	gpio@c100 {
+		status = "okay";
+	};
+
+	gpio@c200 {
+		status = "okay";
+	};
+
+	gpio@c300 {
+		status = "okay";
+	};
+
+	gpio@c400 {
+		status = "okay";
+	};
+
+	gpio@c500 {
+		status = "okay";
+	};
+
+	gpio@c600 {
+		status = "okay";
+	};
+
+	gpio@c700 {
+		status = "okay";
+	};
+
+	gpio@c800 {
+		status = "okay";
+	};
+
+	gpio@c900 {
+		status = "okay";
+	};
+};
+
+&pmi8994_mpps {
+	mpp@a000 {
+		status = "okay";
+	};
+
+	mpp@a100 {
+		status = "okay";
+	};
+
+	mpp@a200 {
+		status = "okay";
+	};
+
+	mpp@a300 {
+		status = "okay";
+	};
+};

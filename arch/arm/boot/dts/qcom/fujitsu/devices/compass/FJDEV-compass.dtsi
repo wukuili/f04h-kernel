@@ -1,0 +1,40 @@
+/*
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU LIMITED 2015-2016
+/*----------------------------------------------------------------------------*/
+
+&i2c_11 {
+	compass-i2c@c {
+		compatible = "compass";
+		reg = <0x0c>;
+		status = "ok";
+		gpios = <&msm_gpio 67 0>;
+		pinctrl-names = "compass_irq_active";
+		pinctrl-0 = <&compass_irq>;
+	};
+};
+
+&tlmm_pinmux {
+	compass_irq {
+		qcom,pins = <&gp 67>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <0>;
+		label = "compass_irq";
+		compass_irq: irq_active {
+			bias-pull-down;
+			input-enable;
+		};
+	};
+
+};

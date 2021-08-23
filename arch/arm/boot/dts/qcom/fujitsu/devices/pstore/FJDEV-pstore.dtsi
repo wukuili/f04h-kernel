@@ -1,0 +1,18 @@
+/*
+* COPYRIGHT(c) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+*/
+&soc {
+	ramoops {
+		compatible = "ramoops";
+		status = "ok";
+		
+		android,ramoops-buffer-start = <0xA4100000>;
+		android,ramoops-buffer-size = <0x300000>;
+		android,ramoops-console-size = <0x80000>;
+		android,ramoops-pmsg-size = <0x270000>;
+		android,ramoops-smry-size = <0x1000>;
+		android,ramoops-record-size = <0x0>;
+		android,ramoops-dump-oops = <0>;
+		android,ramoops-ftrace-size = <0x0>;
+	};
+};

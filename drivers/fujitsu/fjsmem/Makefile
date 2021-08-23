@@ -1,0 +1,4 @@
+
+# FUJITSU LIMITED:2014-10-27 H1515008 add start
+obj-y += fjsmem.o
+# FUJITSU LIMITED:2014-10-27 H1515008 add end

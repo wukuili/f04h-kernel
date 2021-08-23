@@ -1,0 +1,63 @@
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU LIMITED 2015-2016
+/*----------------------------------------------------------------------------*/
+
+/* FUJITSU LIMITED:2015-12-16 H161_5_DISP_01_0006 add start */
+&mdss_mdp {
+	qcom,mdss-pref-prim-intf = "dsi";
+};
+
+&mdss_dsi0 {
+	qcom,dsi-pref-prim-pan = <&dsi_dual_s6tnmr7_cmd_0>;
+	pinctrl-names = "mdss_default", "mdss_sleep";
+	pinctrl-0 = <&mdss_te_active>;
+	pinctrl-1 = <&mdss_te_suspend>;
+	qcom,platform-te-gpio = <&msm_gpio 10 0>;
+	fj,platform-tconintr-gpio = <&msm_gpio 74 0>;
+	fj,platform-lcd3_3v-gpio = <&msm_gpio 39 0>;
+
+	qcom,panel-supply-entries {
+		qcom,panel-supply-entry@0 {
+			qcom,supply-name = "vdd";
+			qcom,supply-pre-on-sleep   = <0>;
+/* FCNT LIMITED:2016-02-26 H161_5_DISP_01_0006 mod start */
+			qcom,supply-post-on-sleep  = <0>;
+/* FCNT LIMITED:2016-02-26 H161_5_DISP_01_0006 mod end */
+			qcom,supply-pre-off-sleep  = <0>;
+			qcom,supply-post-off-sleep = <0>;
+		};
+	};
+};
+
+&mdss_dsi1 {
+	qcom,dsi-pref-prim-pan = <&dsi_dual_s6tnmr7_cmd_1>;
+	fj,platform-tconrdy-gpio = <&msm_gpio 78 0>;
+	fj,platform-lcd3_3v-gpio = <&msm_gpio 39 0>;
+
+	qcom,panel-supply-entries {
+		qcom,panel-supply-entry@0 {
+			qcom,supply-name = "vdd";
+			qcom,supply-pre-on-sleep   = <0>;
+			qcom,supply-post-on-sleep  = <0>;
+			qcom,supply-pre-off-sleep  = <10>;
+			qcom,supply-post-off-sleep = <0>;
+		};
+	};
+};
+
+&dsi_dual_s6tnmr7_cmd_0 {
+	qcom,cont-splash-enabled;
+/* FUJITSU LIMITED:2016-01-22 H161_5_DISP_02_0003 add start */
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_oled";
+/* FUJITSU LIMITED:2016-01-22 H161_5_DISP_02_0003 add end */
+	qcom,mdss-dsi-bl-max-level = <255>;
+	qcom,mdss-dsi-bl-min-level = <1>;
+};
+
+&dsi_dual_s6tnmr7_cmd_1 {
+	qcom,cont-splash-enabled;
+};
+/* FUJITSU LIMITED:2015-12-16 H161_5_DISP_01_0006 add end */

@@ -1,0 +1,69 @@
+/* Copyright (c) 2011-2016, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU LIMITED 2016
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+/*----------------------------------------------------------------------------*/
+#ifndef MSM_EEPROM_H
+#define MSM_EEPROM_H
+
+#include <linux/i2c.h>
+#include <linux/gpio.h>
+#include <soc/qcom/camera2.h>
+#include <media/v4l2-subdev.h>
+#include <media/msmb_camera.h>
+#include "msm_camera_i2c.h"
+#include "msm_camera_spi.h"
+#include "msm_camera_io_util.h"
+#include "msm_camera_dt_util.h"
+
+struct msm_eeprom_ctrl_t;
+
+#define DEFINE_MSM_MUTEX(mutexname) \
+	static struct mutex mutexname = __MUTEX_INITIALIZER(mutexname)
+
+#define PROPERTY_MAXSIZE 32
+
+struct msm_eeprom_ctrl_t {
+	struct platform_device *pdev;
+	struct mutex *eeprom_mutex;
+
+	struct v4l2_subdev sdev;
+	struct v4l2_subdev_ops *eeprom_v4l2_subdev_ops;
+	enum msm_camera_device_type_t eeprom_device_type;
+	struct msm_sd_subdev msm_sd;
+	enum cci_i2c_master_t cci_master;
+
+	struct msm_camera_i2c_client i2c_client;
+	struct msm_eeprom_memory_block_t cal_data;
+	uint8_t is_supported;
+	struct msm_eeprom_board_info *eboard_info;
+	uint32_t subdev_id;
+	uint32_t read_eeprom;
+};
+
+/* FUJITSU:2016-02-10 FJ_CAMERA_CUSTOM start */
+#ifdef FJ_CAMERA_CUSTOM // start
+static int eeprom_config_read_data32(struct msm_eeprom_ctrl_t *e_ctrl, 
+    void __user *arg);
+static int msm_eeprom_get_fj_custom_dt_data(struct msm_eeprom_ctrl_t *e_ctrl);
+static int fj_custom_read_eeprom_memory(struct msm_eeprom_ctrl_t *e_ctrl,
+	struct msm_eeprom_memory_block_t *block);
+/* FUJITSU:2016-03-25 FJ_CAMERA_CUSTOM start */
+static int msm_eeprom_setup_read(struct msm_eeprom_ctrl_t *e_ctrl,
+	int setup_data_num);
+/* FUJITSU:2016-03-25 FJ_CAMERA_CUSTOM end */
+#endif // FJ_CAMERA_CUSTOM end
+/* FUJITSU:2016-02-10 FJ_CAMERA_CUSTOM start */
+#endif

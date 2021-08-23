@@ -1,0 +1,25 @@
+/*
+ * FJDEV-fj_det.dtsi
+ *
+ * COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+/* FCNT LIMITED:2016-02-03 H16100726 add start */
+&pmi8994_charger {
+	fj,vb_det-gpio = <&pmi8994_gpios 3 0>;
+/*	fj,vc_det-gpio = <&pmi8994_gpios 4 0>; *//* FCNT LIMITED:2016-02-03 H16100711 del */
+};
+/* FCNT LIMITED:2016-02-03 H16100726 add end */

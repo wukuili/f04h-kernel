@@ -1,0 +1,96 @@
+/*-------------------------------------------------------------------------*/
+/* COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016                */
+/*-------------------------------------------------------------------------*/
+/*
+ * FJDEV-POWER-ON.dtsi
+ *
+ * Copyright(C) 2015 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+/* FUJITSU LIMITED:2015-04-17 H1520319 add start */
+&spmi_bus {
+	qcom,pm8994@0 {
+		qcom,power-on@800 {
+/* FCNT LIMITED:2016-02-15 H16100444 mod start */
+			qcom,s3-debounce = <32>;
+			qcom,s3-src = "kpdpwr-and-resin";
+/* FCNT LIMITED:2016-02-15 H16100444 mod end   */
+
+/* FCNT LIMITED:2016-04-22 H16100444-1 mod start */
+			qcom,pon_1 {
+				qcom,support-reset = <1>;
+				qcom,s1-timer = <6720>;
+				qcom,s2-timer = <1000>;
+				qcom,s2-type = <4>;
+			};
+
+			qcom,pon_2 {
+				qcom,support-reset = <0>;
+				qcom,s1-timer = <6720>;
+				qcom,s2-timer = <1000>;
+				qcom,s2-type = <4>;
+				/delete-property/ linux,code;
+			};
+
+			qcom,pon_3 {
+				qcom,support-reset = <0>;
+				qcom,s1-timer = <6720>;
+				qcom,s2-timer = <1000>;
+				qcom,s2-type = <4>;
+				/delete-property/ qcom,use-bark;
+			};
+/* FCNT LIMITED:2016-04-22 H16100444-1 mod end   */
+		};
+	};
+	qcom,pmi8994@2 {
+		qcom,power-on@800 {
+/* FCNT LIMITED:2016-02-15 H16100444 mod start */
+			qcom,s3-debounce = <97>;
+			qcom,s3-src = "kpdpwr-and-resin";
+/* FCNT LIMITED:2016-02-15 H16100444 mod end   */
+/* take over the bootloader settings
+			qcom,pon_1 {
+				qcom,pon-type = <0>;
+				qcom,pull-up = <1>;
+				qcom,support-reset = <0>;
+				qcom,s1-timer = <6720>;
+				qcom,s2-timer = <1000>;
+				qcom,s2-type = <4>;
+			};
+
+			qcom,pon_2 {
+				qcom,pon-type = <1>;
+				qcom,pull-up = <1>;
+				qcom,support-reset = <0>;
+				qcom,s1-timer = <6720>;
+				qcom,s2-timer = <1000>;
+				qcom,s2-type = <4>;
+			};
+
+			qcom,pon_3 {
+				qcom,pon-type = <3>;
+				qcom,pull-up = <1>;
+				qcom,support-reset = <0>;
+				qcom,s1-timer = <6720>;
+				qcom,s2-timer = <1000>;
+				qcom,s2-type = <4>;
+			};
+*/
+		};
+	};
+};
+/* FUJITSU LIMITED:2015-04-17 H1520319 add end   */

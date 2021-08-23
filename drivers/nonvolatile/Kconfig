@@ -1,0 +1,12 @@
+#===============================================================================
+# COPYRIGHT(C) FUJITSU LIMITED 2013 - 2014
+#===============================================================================
+# FUJITSU LIMITED:2014-10-23 H1510036 add start
+
+#
+# nonvolatile configuration
+#
+config NONVOLATILE
+	tristate "Nonvolatile data read/write support"
+
+# FUJITSU LIMITED:2014-10-23 H1510036 add end

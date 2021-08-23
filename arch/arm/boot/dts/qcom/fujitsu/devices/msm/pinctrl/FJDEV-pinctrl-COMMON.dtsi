@@ -1,0 +1,357 @@
+/*
+ * FJDEV-pinctrl-COMMON.dtsi
+ *
+ * Copyright(C) 2016 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+&tlmm_pinmux {
+	pmx-uartconsole {
+		status = "disabled";
+	};
+
+	blsp2_uart2_active {
+		status = "disabled";
+	};
+
+	blsp2_uart2_sleep {
+		status = "disabled";
+	};
+
+	spi_0_active {
+		status = "disabled";
+	};
+
+	spi_0_suspend {
+		status = "disabled";
+	};
+
+	spi_cs1_active {
+		status = "disabled";
+	};
+
+	spi_cs1_suspend {
+		status = "disabled";
+	};
+
+	pmx_i2c_1 {
+		status = "disabled";
+	};
+
+	pmx_i2c_2 {
+		status = "disabled";
+	};
+
+	pmx_i2c_5 {
+		status = "disabled";
+	};
+
+	pmx_i2c_6 {
+		status = "disabled";
+	};
+
+/* FUJITSU:2016-02-05 FJ_CAMERA_CUSTOM start */
+	ir_led_pin {
+		/* CONTROL1, CONTROL_2 */
+		qcom,pins = <&gp 28>;
+		qcom,num-grp-pins = <1>;
+		label = "ir_led_pin";
+		/* active state */
+		ir_led_pin_active: ir_led_pin_active {
+			drive-strength = <2>; /* 2 MA */
+			bias-disable; /* No PULL */
+		};
+		/* sleep state */
+		ir_led_pin_sleep: ir_led_pin_sleep {
+			drive-strength = <2>; /* 2 MA */
+			bias-disable; /* No PULL */
+		};
+	};
+	ir_led_load_switch {
+		/* IRLED_EN, IRLED_XFAULT */
+		qcom,pins = <&gp 127>, <&gp 132>;
+		qcom,num-grp-pins = <2>;
+		label = "ir_led_load_switch";
+		/* active state */
+		ir_led_load_switch_active: ir_led_load_switch_active {
+			drive-strength = <2>; /* 2 MA */
+			bias-disable; /* No PULL */
+		};
+		/* sleep state */
+		ir_led_load_switch_sleep: ir_led_load_switch_sleep {
+			drive-strength = <2>; /* 2 MA */
+			bias-disable; /* No PULL */
+		};
+	};
+/* FUJITSU:2016-02-05 FJ_CAMERA_CUSTOM end */
+
+	fj_pmx-uartconsole_tx {
+		qcom,pins = <&gp 4>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <2>;
+		label = "fj_uart-console_tx";
+
+		fj_uart_console_sleep_tx: fj_uart-console_tx {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	fj_pmx-uartconsole_rx {
+		qcom,pins = <&gp 5>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <2>;
+		label = "fj_uart-console_rx";
+
+		fj_uart_console_sleep_rx: fj_uart-console_rx {
+			drive-strength = <2>;
+			bias-pull-up;
+		};
+	};
+
+	fj_blsp2_uart2_in_active {
+		qcom,pins = <&gp 46>, <&gp 47>;
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <2>;
+	        label = "fj_blsp2_uart2_in_active";
+		fj_hsuart_in_active: fj_in_default {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	fj_blsp2_uart2_out_active {
+		qcom,pins = <&gp 45>, <&gp 48>;
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <2>;
+	        label = "fj_blsp2_uart2_out_active";
+		fj_hsuart_out_active: fj_out_default {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	fj_blsp2_uart2_in_sleep {
+		qcom,pins = <&gp 46>, <&gp 47>;
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <0>;
+	        label = "fj_blsp2_uart2_in_sleep";
+		fj_hsuart_in_sleep: fj_in_sleep {
+			drive-strength = <2>;
+			bias-pull-down;
+		};
+	};
+
+	fj_blsp2_uart2_out_sleep {
+		qcom,pins = <&gp 45>,<&gp 48>;
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <0>;
+	        label = "fj_blsp2_uart2_out_sleep";
+		fj_hsuart_out_sleep: fj_out_sleep {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	fj_pmx_i2c_1 {
+		qcom,pins = <&gp 2>, <&gp 3>; /* SDA, SCL */
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <3>;
+		label = "fj_pmx_i2c_1";
+
+		fj_i2c_1_active: fj_i2c_1_active {
+			drive-strength = <2>;
+			bias-disable;
+		};
+
+		fj_i2c_1_sleep: fj_i2c_1_sleep {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	fj_pmx_i2c_2_active {
+		qcom,pins = <&gp 6>, <&gp 7>; /* SDA, SCL */
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <3>;
+		label = "fj_pmx_i2c_2_active";
+		fj_i2c_2_active: fj_i2c_2_active {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	fj_pmx_i2c_2_sleep {
+		qcom,pins = <&gp 6>, <&gp 7>; /* SDA, SCL */
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <0>;
+		label = "fj_pmx_i2c_2_sleep";
+		fj_i2c_2_sleep: fj_i2c_2_sleep {
+			drive-strength = <2>;
+			input-enable;
+			bias-pull-down;
+		};
+	};
+
+	fj_pmx_i2c_5_sda {
+		qcom,pins = <&gp 23>; /* SDA */
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <4>;
+		label = "fj_pmx_i2c_5_sda";
+
+		fj_i2c_5_sda_active: fj_i2c_5_sda_active {
+			drive-strength = <2>;
+			bias-disable;
+		};
+
+		fj_i2c_5_sda_sleep: fj_i2c_5_sda_sleep {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+	
+	fj_pmx_i2c_5_scl {
+		qcom,pins = <&gp 24>; /* SCL */
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <5>;
+		label = "fj_pmx_i2c_5_scl";
+
+		fj_i2c_5_scl_active: fj_i2c_5_scl_active {
+			drive-strength = <2>;
+			bias-disable;
+		};
+
+		fj_i2c_5_scl_sleep: fj_i2c_5_scl_sleep {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	fj_pmx_i2c_11 {
+		qcom,pins = <&gp 83>, <&gp 84>; /* SDA, SCL */
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <3>;
+		label = "fj_pmx_i2c_11";
+
+		fj_i2c_11_active: fj_i2c_11_active {
+			drive-strength = <2>;
+			bias-disable;
+		};
+
+		fj_i2c_11_sleep: fj_i2c_11_sleep {
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+/* FUJITSU LIMITED:2014-10-29 H1510018 add start */
+	fj_tlmm_gpio_key {
+		qcom,pins = <&gp 64>, <&gp 77>;
+		qcom,num-grp-pins = <2>;
+		qcom,pin-func = <0>;
+		label = "fj_tlmm_gpio_key";
+
+		fj_gpio_key_active: fj_gpio_key_active {
+			drive-strength = <2>;
+			bias-pull-up;
+			input-enable;
+		};
+
+		fj_gpio_key_suspend: fj_gpio_key_suspend {
+			drive-strength = <2>;
+			bias-pull-up;
+			input-enable;
+		};
+	};
+/* FUJITSU LIMITED:2014-10-29 H1510018 add end */
+/* FUJITSU:2016-02-12 FJ_CAMERA_CUSTOM start */
+// FJ_CAMERA_CUSTOM start
+    cam_sensor_ir_active {
+	    /* RESET */
+	    qcom,pins = <&gp 110>;
+	    qcom,num-grp-pins = <1>;
+	    label = "cam_sensor_ir_active";
+	    /* active state */
+	    cam_sensor_ir_active: cam_sensor_ir_active {
+	        drive-strength = <2>; /* 2 MA */
+	        bias-disable; /* No PULL */
+	    };
+	};
+	cam_sensor_ir_suspend {
+	    /* RESET */
+	    qcom,pins = <&gp 110>;
+	    qcom,num-grp-pins = <1>;
+	    label = "cam_sensor_ir_suspend";
+	    /*suspended state */
+	    cam_sensor_ir_suspend: cam_sensor_ir_suspend {
+	        drive-strength = <2>; /* 2 MA */
+	        bias-disable; /* No PULL */
+	    };
+	};
+// FJ_CAMERA_CUSTOM end
+/* FUJITSU:2016-02-12 FJ_CAMERA_CUSTOM end */
+/* FUJITSU LIMITED:2015-04-20 H152_2_DISP_01_0004 add start */
+	pmx_mdss_te {
+		qcom,num-grp-pins = <1>;
+		qcom,pins = <&gp 10>;
+	};
+/* FUJITSU LIMITED:2015-04-20 H152_2_DISP_01_0004 add end */
+
+
+/*FUJITSU LIMITED:2016-01-07 H161_5_MHL_01_0001 add start */
+	spi_8 {
+		qcom,pins = <&gp 49>, <&gp 50>, <&gp 51>, <&gp 52>;
+		qcom,num-grp-pins = <4>;
+		qcom,pin-func = <2>;
+		label = "spi_8";
+
+		spi_8_active: spi_8_active {
+			drive-strength = <6>;
+			bias-pull-up;
+		};
+
+		spi_8_sleep: spi_8_sleep {
+			drive-strength = <6>;
+			bias-pull-up;
+		};
+	};
+
+	mhl_intr: mhl_intr {
+		qcom,pins = <&gp 57>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <0>;
+		label = "mhl_intr";
+
+		mhl_intr_active: mhl_intr_active {
+			bias-pull-up;
+			input-enable;
+		};
+	};
+
+	mhl_reset: mhl_reset {
+		qcom,pins = <&gp 58>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <0>;
+		label = "mhl_reset";
+
+		mhl_reset_active: mhl_reset_active {
+			drive-strength = <2>;
+			bias-pull-down;
+			output-low;
+		};
+	};
+/*FUJITSU LIMITED:2016-01-07 H161_5_MHL_01_0001 add end */
+};

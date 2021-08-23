@@ -1,0 +1,92 @@
+/* Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU LIMITED 2012-2016
+// COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+/*----------------------------------------------------------------------------*/
+
+&soc {
+	fj_wm_device {
+		compatible = "fj_wm_device";
+		status = "ok";
+		pinctrl-names = "hce_reset_active", "hce_wakeup_active","hce_irq_active","hce_sar_default";
+		pinctrl-0 = <&hce_reset_active>;
+		pinctrl-1 = <&hce_wakeup_active>;
+		pinctrl-2 = <&hce_irq_active>;
+		pinctrl-3 = <&hce_sar_default>;
+		fj_wm_device,motion_irq = <0>;
+		fj_wm_device,mc_init_delay = <20>;
+
+		gpios = <&msm_gpio 1 0>, /* GPIO_1 KO_MOTION_IRQ */
+			<&msm_gpio 63 0>, /* GPIO_63 KO_XHOSU_STBY */
+			<&msm_gpio 31 0>; /* GPIO_31 KO_XHOSU_WUP  */
+
+		/* LDO CTL */
+		fj_wm_device,ldo_ctl = <0>; /* 1:enable, 0:disable*/
+		/* fj_wm_device,gpio_ldo = <&msmgpio 0 0>; * /
+
+		/* SAR CTL  */
+		fj_wm_device,sar_ctl = <1>; /* 1:enable, 0:disable*/
+		fj_wm_device,gpio_sar = <&msm_gpio 133 0>;
+
+	};
+};
+
+&tlmm_pinmux {
+	hce_reset {
+		qcom,pins = <&gp 63>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <0>;
+		label = "hce_reset";
+		hce_reset_active: hce_reset_active {
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	hce_wakeup {
+		qcom,pins = <&gp 31>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <0>;
+		label = "hce_wakeup";
+		hce_wakeup_active: hce_wakeup_active {
+			drive-strength = <2>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+		hce_irq {
+		qcom,pins = <&gp 1>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <0>;
+		label = "hce_irq";
+		hce_irq_active: hce_irq_active {
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	hce_sar {
+		qcom,pins = <&gp 133>;
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <0>;
+		label = "hce_sar";
+		hce_sar_default: hce_sar_default {
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+};

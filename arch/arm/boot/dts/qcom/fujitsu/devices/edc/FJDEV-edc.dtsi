@@ -1,0 +1,54 @@
+/*
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+/*----------------------------------------------------------------------------*/
+// COPYRIGHT(C) FUJITSU LIMITED 2013-2015
+/*----------------------------------------------------------------------------*/
+
+&soc {
+	fj-edc {
+		compatible = "fj-edc";
+		status = "ok";
+		gpios = <&pmi8994_gpios 6 0>, /* Earphone jack            */
+				<&pm8994_mpps   2 0>, /* Earphone jack vol        */
+				<&pm8994_mpps   5 0>, /* JMIC vol                 */
+				<&pmi8994_gpios 8 0>; /* Earphone switch          */
+		qcom,edc-vadc = <&pm8994_vadc>;
+	};
+};
+
+&spmi_bus {
+	qcom,pm8994@0 {
+		vadc@3100 {
+			chan@11 {
+				label = "earphone_det";
+				reg = <0x11>;
+				qcom,decimation = <0>;
+				qcom,pre-div-channel-scaling = <0>;
+				qcom,calibration-type = "ratiometric";
+				qcom,scale-function = <0>;
+				qcom,hw-settle-time = <0>;
+				qcom,fast-avg-setup = <0>;
+			};
+			chan@14 {
+				label = "earphone_type_det";
+				reg = <0x14>;
+				qcom,decimation = <0>;
+				qcom,pre-div-channel-scaling = <0>;
+				qcom,calibration-type = "ratiometric";
+				qcom,scale-function = <0>;
+				qcom,hw-settle-time = <0>;
+				qcom,fast-avg-setup = <0>;
+			};
+		};
+	};
+};

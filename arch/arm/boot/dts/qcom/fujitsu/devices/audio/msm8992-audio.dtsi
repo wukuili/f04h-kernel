@@ -1,0 +1,26 @@
+/* Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+/* Copyright(C) 2015 FUJITSU LIMITED */
+/* H-FAUDIO-000056004 start */
+&soc {
+	slim_msm: slim@fe12f000 {
+		tomtom_codec {
+			qcom,cdc-micbias-ldoh-v = <0x3>;
+			qcom,cdc-micbias-cfilt2-mv = <2540>;
+			qcom,cdc-micbias-cfilt3-mv = <2540>;
+            /* N-FAUDIO-161061034 start */
+			//qcom,gpio-aud-asw= <&msm_gpio 21 0x00>; /*N-FAUDIO-151061000*/
+            /* N-FAUDIO-161061034 end */
+		};
+	};
+};
+/* H-FAUDIO-000056004 end */

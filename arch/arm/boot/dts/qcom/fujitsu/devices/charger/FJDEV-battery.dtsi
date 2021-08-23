@@ -1,0 +1,39 @@
+/*
+ * FJDEV-battery.dtsi
+ *
+ * COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016-2017
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+&soc {
+	fj_battery_drv {
+		compatible = "fj,fj_battery_drv";
+		status = "ok";
+	};
+};
+
+&pmi8994_fg {
+	qcom,battery-data = <&fjdev_batterydata>;
+	qcom,ext-sense-type;
+	qcom,fg-iterm-ma = <250>;
+	qcom,fg-chg-iterm-ma = <200>;
+	qcom,fg-cc-cv-threshold-mv = <4270>;			/* FCNT LIMITED:2017-01-18 CHARGER mod */
+	qcom,irq-volt-empty-mv = <3000>;
+	qcom,fg-cutoff-voltage-mv = <3470>;
+	/delete-property/ qcom,cycle-counter-en;
+	/delete-property/ qcom,capacity-learning-on;
+	qcom,capacity-learning-feedback;
+};

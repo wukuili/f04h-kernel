@@ -1,0 +1,30 @@
+/*
+ * device-list.dtsi
+ *
+ * Copyright(C) 2015-2016 FUJITSU LIMITED
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2
+ * of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+#include "../device-list.dtsi"
+/* H-FAUDIO-000056004 start */
+#include "../../devices/audio/msm8992-audio.dtsi"
+/* H-FAUDIO-000056004 end */
+#include "../../devices/pstore/FJDEV-pstore.dtsi"
+
+/*FUJITSU LIMITED:2016-01-07 H161_5_MHL_01_0001 add start */
+#include "../../devices/mhl/FJDEV-mhl.dtsi"
+/*FUJITSU LIMITED:2016-01-07 H161_5_MHL_01_0001 add end */
+

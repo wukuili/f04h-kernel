@@ -1,0 +1,137 @@
+/* Copyright (c) 2014-2016, FUJITSU LIMITED
+ * COPYRIGHT(C) FUJITSU CONNECTED TECHNOLOGIES LIMITED 2016
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&i2c_2 {
+	atmel_mxt_ts: atmel_mxt_ts-i2c@4A {
+		compatible = "atmel,maxtouch";
+		reg = <0x4A>;
+		status = "ok";
+
+		atmel,vdd-reg-name = "vdd";
+		vdd-supply = <&pm8994_lvs2>;
+		atmel,avdd-reg-name = "avdd";
+		avdd-supply = <&pm8994_l22>;
+		atmel,avdd-reg-voltage = <3300000 3300000>; /* min, max */
+		atmel,avdd-reg-optimum-uv = <0 100000>; /* LPM, NPM */
+
+		interrupt-parent = <&msm_gpio>;
+		interrupts = <61 0x2>;
+		atmel,irq-flags = <0x02>; /* IRQF_TRIGGER_FALLING */
+		atmel,reset-gpio = <&msm_gpio 60 0x00>;
+
+		pinctrl-names = "mxt_irq_active", "mxt_irq_default", "mxt_rst_active",
+		                "mxt_rst_default", "mxt_i2c_active", "mxt_i2c_default";
+		pinctrl-0 = <&ts_mxt_irq_active>;
+		pinctrl-1 = <&ts_mxt_irq_default>;
+		pinctrl-2 = <&ts_mxt_rst_active>;
+		pinctrl-3 = <&ts_mxt_rst_default>;
+		pinctrl-4 = <&ts_mxt_i2c_active>;
+		pinctrl-5 = <&ts_mxt_i2c_default>;
+
+		atmel,input_name = "atmel_mxt_ts";
+		atmel,cfg_name = "T161SDMM.raw";
+
+		/* Suspend mode */
+		atmel,suspend-mode = <2>; /* MXT_SUSPEND_REGULATOR */
+
+		atmel,async-start; /* Resume async */
+
+		atmel,wakeup-gesture {
+			t7-object {
+				id = <7>;
+				offset = <0>;
+				active-data = [64 1E 0F];
+				active-userdata-offset = <0>;
+			};
+			t100-object {
+				id = <100>;
+				offset = <0>;
+				active-data = [89];
+			};
+			t93-object {
+				id = <93>;
+				offset = <0>;
+				active-data = [0F];
+			};
+			t8-object {
+				id = <8>;
+				offset = <14>;
+				active-data = [01];
+			};
+		};
+	};
+};
+
+&tlmm_pinmux {
+	ts_mxt_irq_pin {
+		qcom,pins = <&gp 61>;
+		qcom,pin-func = <0>;
+		qcom,num-grp-pins = <1>;
+		label = "mxt_irq_gpio";
+
+		/* Input, Pull Up */
+		ts_mxt_irq_active: ts_mxt_irq_active {
+			drive-strength = <2>;
+			input-enable;
+			bias-pull-up;
+		};
+
+		/* Input, Pull Down */
+		ts_mxt_irq_default: ts_mxt_irq_default {
+			drive-strength = <2>;
+			input-enable;
+			bias-pull-down;
+		};
+	};
+
+	ts_mxt_rst_pin {
+		qcom,pins = <&gp 60>;
+		qcom,pin-func = <0>;
+		qcom,num-grp-pins = <1>;
+		label = "mxt_rst_gpio";
+
+		/* Input, Keeper */
+		ts_mxt_rst_active: ts_mxt_rst_active {
+			drive-strength = <2>;
+			input-enable;
+			bias-bus-hold;
+		};
+
+		/* Output, Low */
+		ts_mxt_rst_default: ts_mxt_rst_default {
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+
+	ts_mxt_i2c_pin {
+		qcom,pins = <&gp 6>, <&gp 7>;
+		qcom,num-grp-pins = <2>;
+		label = "mxt_i2c_gpio";
+
+		/* BLSP mode */
+		ts_mxt_i2c_active: ts_mxt_i2c_active {
+			drive-strength = <2>;
+			qcom,pin-func = <3>;
+			bias-disable;
+		};
+
+		/* Input, Pull Down */
+		ts_mxt_i2c_default: ts_mxt_i2c_default {
+			drive-strength = <2>;
+			qcom,pin-func = <0>;
+			input-enable;
+			bias-pull-down;
+		};
+	};
+};
