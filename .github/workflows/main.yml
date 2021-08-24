@@ -9,12 +9,13 @@ on:
 jobs:
   build:
 
-    runs-on: Ubuntu-latest
+    runs-on: Ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v2
     - name: build
       run: |
+       sudo apt update
        sudo apt install gcc-5
        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 1
        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 2
