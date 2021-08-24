@@ -15,10 +15,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: build
       run: |
-       mkdir /tmp/kernel
-       make O=/tmp/kernel config
-       make O=/tmp/kernel
-       make O=/tmp/kernel modules_install install
+       make config
+       make 
+       make modules_install install
 #     - name : Upload packages
 #       uses: actions/upload-artifact@master
 #       if: always()
