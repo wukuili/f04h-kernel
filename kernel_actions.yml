@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: |
+       mkdir /tmp/kernel
+       make O=/tmp/kernel menuconfig
+       make O=/tmp/kernel
+       make O=/tmp/kernel modules_install install
+    - name : Upload packages
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: 3.10_kernel
+        path: /tmp/kernel
