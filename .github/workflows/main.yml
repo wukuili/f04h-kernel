@@ -15,6 +15,14 @@ jobs:
     - uses: actions/checkout@v2
     - name: build
       run: |
+       echo "deb http://dk.archive.ubuntu.com/ubuntu/ trusty main universe" >>>/etc/apt/source.list
+       echo "deb deb http://dk.archive.ubuntu.com/ubuntu/ trusty-updates main universe" >>>/etc/apt/source.list
+       sudo apt-get update
+       sudo apt-get install gcc-4.4 gcc-4.4-multilib g++-4.4 g++-4.4-multilib
+       sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 20
+       sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 10
+       sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 20
+       sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 10
        mkdir ~/bin
        ln -s /usr/bin/python2 ~/bin/python
        ln -s /usr/bin/python2-config ~/bin/python-config
