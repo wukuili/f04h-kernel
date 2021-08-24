@@ -210,7 +210,9 @@ source "drivers/input/joystick/Kconfig"
 
 source "drivers/input/tablet/Kconfig"
 
-source "drivers/input/touchscreen/Kconfig"
+source "drivers/input/touchscreen/gt9xx/Kconfig"
+
+source "drivers/input/touchscreen/snaptics_dsx/Kconfig"
 
 source "drivers/input/misc/Kconfig"
 
