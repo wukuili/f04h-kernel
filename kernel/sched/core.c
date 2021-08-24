@@ -124,20 +124,20 @@ const char *task_event_names[] = {"PUT_PREV_TASK", "PICK_NEXT_TASK",
 ATOMIC_NOTIFIER_HEAD(migration_notifier_head);
 ATOMIC_NOTIFIER_HEAD(load_alert_notifier_head);
 
-#ifdef smp_mb__before_atomic
-void __smp_mb__before_atomic(void)
+#ifdef smp_mb__before_clear_bit
+void __smp_mb__before_clear_bit(void)
 {
-	smp_mb__before_atomic();
+	smp_mb__before_clear_bit();
 }
-EXPORT_SYMBOL(__smp_mb__before_atomic);
+EXPORT_SYMBOL(__smp_mb__before_clear_bit);
 #endif
 
-#ifdef smp_mb__after_atomic
-void __smp_mb__after_atomic(void)
+#ifdef smp_mb__after_clear_bit
+void __smp_mb__after_clear_bit(void)
 {
-	smp_mb__after_atomic();
+	smp_mb__after_clear_bit();
 }
-EXPORT_SYMBOL(__smp_mb__after_atomic);
+EXPORT_SYMBOL(__smp_mb__after_clear_bit);
 #endif
 
 /* FCNT:2016-06-16 LogImprovement ADD-S */

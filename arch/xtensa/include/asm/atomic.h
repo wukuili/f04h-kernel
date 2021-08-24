@@ -388,10 +388,10 @@ static inline void atomic_set_mask(unsigned int mask, atomic_t *v)
 }
 
 /* Atomic operations are already serializing */
-#define smp_mb__before_atomic_dec()	barrier()
-#define smp_mb__after_atomic_dec()	barrier()
-#define smp_mb__before_atomic_inc()	barrier()
-#define smp_mb__after_atomic_inc()	barrier()
+#define smp_mb__before_clear_bit_dec()	barrier()
+#define smp_mb__after_clear_bit_dec()	barrier()
+#define smp_mb__before_clear_bit_inc()	barrier()
+#define smp_mb__after_clear_bit_inc()	barrier()
 
 #endif /* __KERNEL__ */
 

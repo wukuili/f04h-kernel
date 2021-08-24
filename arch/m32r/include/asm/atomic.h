@@ -309,9 +309,9 @@ static __inline__ void atomic_set_mask(unsigned long  mask, atomic_t *addr)
 }
 
 /* Atomic operations are already serializing on m32r */
-#define smp_mb__before_atomic_dec()	barrier()
-#define smp_mb__after_atomic_dec()	barrier()
-#define smp_mb__before_atomic_inc()	barrier()
-#define smp_mb__after_atomic_inc()	barrier()
+#define smp_mb__before_clear_bit_dec()	barrier()
+#define smp_mb__after_clear_bit_dec()	barrier()
+#define smp_mb__before_clear_bit_inc()	barrier()
+#define smp_mb__after_clear_bit_inc()	barrier()
 
 #endif	/* _ASM_M32R_ATOMIC_H */

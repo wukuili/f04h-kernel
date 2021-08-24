@@ -270,10 +270,10 @@ static __inline__ int atomic_dec_if_positive(atomic_t *v)
 }
 #define atomic_dec_if_positive atomic_dec_if_positive
 
-#define smp_mb__before_atomic_dec()     smp_mb()
-#define smp_mb__after_atomic_dec()      smp_mb()
-#define smp_mb__before_atomic_inc()     smp_mb()
-#define smp_mb__after_atomic_inc()      smp_mb()
+#define smp_mb__before_clear_bit_dec()     smp_mb()
+#define smp_mb__after_clear_bit_dec()      smp_mb()
+#define smp_mb__before_clear_bit_inc()     smp_mb()
+#define smp_mb__after_clear_bit_inc()      smp_mb()
 
 #ifdef __powerpc64__
 

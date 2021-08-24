@@ -36,16 +36,16 @@ extern unsigned long __sw_hweight64(__u64 w);
 #ifndef smp_mb__before_clear_bit
 static inline void __deprecated smp_mb__before_clear_bit(void)
 {
-	extern void __smp_mb__before_atomic(void);
-	__smp_mb__before_atomic();
+	extern void __smp_mb__before_clear_bit(void);
+	__smp_mb__before_clear_bit();
 }
 #endif
 
 #ifndef smp_mb__after_clear_bit
 static inline void __deprecated smp_mb__after_clear_bit(void)
 {
-	extern void __smp_mb__after_atomic(void);
-	__smp_mb__after_atomic();
+	extern void __smp_mb__after_clear_bit(void);
+	__smp_mb__after_clear_bit();
 }
 #endif
 

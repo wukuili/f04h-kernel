@@ -30,10 +30,10 @@
 #define smp_wmb()       barrier()
 #endif
 
-#define smp_mb__before_atomic_dec()	barrier()
-#define smp_mb__after_atomic_dec()	barrier()
-#define smp_mb__before_atomic_inc()	barrier()
-#define smp_mb__after_atomic_inc()	barrier()
+#define smp_mb__before_clear_bit_dec()	barrier()
+#define smp_mb__after_clear_bit_dec()	barrier()
+#define smp_mb__before_clear_bit_inc()	barrier()
+#define smp_mb__after_clear_bit_inc()	barrier()
 
 #define smp_read_barrier_depends()      do { } while (0)
 

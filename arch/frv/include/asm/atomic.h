@@ -30,10 +30,10 @@
  */
 
 /* Atomic operations are already serializing */
-#define smp_mb__before_atomic_dec()	barrier()
-#define smp_mb__after_atomic_dec()	barrier()
-#define smp_mb__before_atomic_inc()	barrier()
-#define smp_mb__after_atomic_inc()	barrier()
+#define smp_mb__before_clear_bit_dec()	barrier()
+#define smp_mb__after_clear_bit_dec()	barrier()
+#define smp_mb__before_clear_bit_inc()	barrier()
+#define smp_mb__after_clear_bit_inc()	barrier()
 
 #define ATOMIC_INIT(i)		{ (i) }
 #define atomic_read(v)		(*(volatile int *)&(v)->counter)

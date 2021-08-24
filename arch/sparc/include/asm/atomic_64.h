@@ -109,9 +109,9 @@ static inline long atomic64_add_unless(atomic64_t *v, long a, long u)
 extern long atomic64_dec_if_positive(atomic64_t *v);
 
 /* Atomic operations are already serializing */
-#define smp_mb__before_atomic_dec()	barrier()
-#define smp_mb__after_atomic_dec()	barrier()
-#define smp_mb__before_atomic_inc()	barrier()
-#define smp_mb__after_atomic_inc()	barrier()
+#define smp_mb__before_clear_bit_dec()	barrier()
+#define smp_mb__after_clear_bit_dec()	barrier()
+#define smp_mb__before_clear_bit_inc()	barrier()
+#define smp_mb__after_clear_bit_inc()	barrier()
 
 #endif /* !(__ARCH_SPARC64_ATOMIC__) */

@@ -1096,10 +1096,10 @@ There are some more advanced barrier functions:
      insert anything more than a compiler barrier in a UP compilation.
 
 
- (*) smp_mb__before_atomic_dec();
- (*) smp_mb__after_atomic_dec();
- (*) smp_mb__before_atomic_inc();
- (*) smp_mb__after_atomic_inc();
+ (*) smp_mb__before_clear_bit_dec();
+ (*) smp_mb__after_clear_bit_dec();
+ (*) smp_mb__before_clear_bit_inc();
+ (*) smp_mb__after_clear_bit_inc();
 
      These are for use with atomic add, subtract, increment and decrement
      functions that don't return a value, especially when used for reference
@@ -1109,7 +1109,7 @@ There are some more advanced barrier functions:
      and then decrements the object's reference count:
 
 	obj->dead = 1;
-	smp_mb__before_atomic_dec();
+	smp_mb__before_clear_bit_dec();
 	atomic_dec(&obj->ref_count);
 
      This makes sure that the death mark on the object is perceived to be set
@@ -1719,7 +1719,7 @@ With these the appropriate explicit memory barrier should be used if necessary
 
 
 The following also do _not_ imply memory barriers, and so may require explicit
-memory barriers under some circumstances (smp_mb__before_atomic_dec() for
+memory barriers under some circumstances (smp_mb__before_clear_bit_dec() for
 instance):
 
 	atomic_add();

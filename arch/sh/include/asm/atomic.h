@@ -62,9 +62,9 @@ static inline int __atomic_add_unless(atomic_t *v, int a, int u)
 	return c;
 }
 
-#define smp_mb__before_atomic_dec()	smp_mb()
-#define smp_mb__after_atomic_dec()	smp_mb()
-#define smp_mb__before_atomic_inc()	smp_mb()
-#define smp_mb__after_atomic_inc()	smp_mb()
+#define smp_mb__before_clear_bit_dec()	smp_mb()
+#define smp_mb__after_clear_bit_dec()	smp_mb()
+#define smp_mb__before_clear_bit_inc()	smp_mb()
+#define smp_mb__after_clear_bit_inc()	smp_mb()
 
 #endif /* __ASM_SH_ATOMIC_H */

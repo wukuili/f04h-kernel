@@ -143,10 +143,10 @@ static __inline__ int __atomic_add_unless(atomic_t *v, int a, int u)
 
 #define ATOMIC_INIT(i)	{ (i) }
 
-#define smp_mb__before_atomic_dec()	smp_mb()
-#define smp_mb__after_atomic_dec()	smp_mb()
-#define smp_mb__before_atomic_inc()	smp_mb()
-#define smp_mb__after_atomic_inc()	smp_mb()
+#define smp_mb__before_clear_bit_dec()	smp_mb()
+#define smp_mb__after_clear_bit_dec()	smp_mb()
+#define smp_mb__before_clear_bit_inc()	smp_mb()
+#define smp_mb__after_clear_bit_inc()	smp_mb()
 
 #ifdef CONFIG_64BIT
 

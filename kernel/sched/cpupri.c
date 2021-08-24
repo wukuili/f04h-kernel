@@ -164,7 +164,7 @@ void cpupri_set(struct cpupri *cp, int cpu, int newpri)
 		 * do a write memory barrier, and then update the count, to
 		 * make sure the vector is visible when count is set.
 		 */
-		smp_mb__before_atomic();
+		smp_mb__before_clear_bit();
 		atomic_inc(&(vec)->count);
 		do_mb = 1;
 	}
@@ -184,14 +184,14 @@ void cpupri_set(struct cpupri *cp, int cpu, int newpri)
 		 * the new priority vec.
 		 */
 		if (do_mb)
-			smp_mb__after_atomic();
+			smp_mb__after_clear_bit();
 
 		/*
 		 * When removing from the vector, we decrement the counter first
 		 * do a memory barrier and then clear the mask.
 		 */
 		atomic_dec(&(vec)->count);
-		smp_mb__after_atomic();
+		smp_mb__after_clear_bit();
 		cpumask_clear_cpu(cpu, vec->mask);
 	}
 

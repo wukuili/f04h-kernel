@@ -46,12 +46,12 @@
 #define read_barrier_depends()		do {} while (0)
 #define smp_read_barrier_depends()	do {} while (0)
 
-#ifndef smp_mb__before_atomic
-#define smp_mb__before_atomic()	smp_mb()
+#ifndef smp_mb__before_clear_bit
+#define smp_mb__before_clear_bit()	smp_mb()
 #endif
 
-#ifndef smp_mb__after_atomic
-#define smp_mb__after_atomic()	smp_mb()
+#ifndef smp_mb__after_clear_bit
+#define smp_mb__after_clear_bit()	smp_mb()
 #endif
 
 #define smp_store_release(p, v)						\

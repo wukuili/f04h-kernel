@@ -53,9 +53,9 @@ extern void atomic_set(atomic_t *, int);
 #define atomic_sub_and_test(i, v) (atomic_sub_return(i, v) == 0)
 
 /* Atomic operations are already serializing */
-#define smp_mb__before_atomic_dec()	barrier()
-#define smp_mb__after_atomic_dec()	barrier()
-#define smp_mb__before_atomic_inc()	barrier()
-#define smp_mb__after_atomic_inc()	barrier()
+#define smp_mb__before_clear_bit_dec()	barrier()
+#define smp_mb__after_clear_bit_dec()	barrier()
+#define smp_mb__before_clear_bit_inc()	barrier()
+#define smp_mb__after_clear_bit_inc()	barrier()
 
 #endif /* !(__ARCH_SPARC_ATOMIC__) */

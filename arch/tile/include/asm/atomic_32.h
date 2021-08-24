@@ -241,10 +241,10 @@ static inline void atomic64_set(atomic64_t *v, u64 n)
  * But after the word is updated, the routine issues an "mf" before returning,
  * and since it's a function call, we don't even need a compiler barrier.
  */
-#define smp_mb__before_atomic_dec()	smp_mb()
-#define smp_mb__before_atomic_inc()	smp_mb()
-#define smp_mb__after_atomic_dec()	do { } while (0)
-#define smp_mb__after_atomic_inc()	do { } while (0)
+#define smp_mb__before_clear_bit_dec()	smp_mb()
+#define smp_mb__before_clear_bit_inc()	smp_mb()
+#define smp_mb__after_clear_bit_dec()	do { } while (0)
+#define smp_mb__after_clear_bit_inc()	do { } while (0)
 
 #endif /* !__ASSEMBLY__ */
 
