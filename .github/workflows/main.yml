@@ -16,12 +16,12 @@ jobs:
     - name: build
       run: |
        mkdir /tmp/kernel
-       make O=/tmp/kernel menuconfig
+       make O=/tmp/kernel config
        make O=/tmp/kernel
        make O=/tmp/kernel modules_install install
-    - name : Upload packages
-      uses: actions/upload-artifact@master
-      if: always()
-      with:
-        name: 3.10_kernel
-        path: /tmp/kernel
+#     - name : Upload packages
+#       uses: actions/upload-artifact@master
+#       if: always()
+#       with:
+#         name: 3.10_kernel
+#         path: /tmp/kernel
